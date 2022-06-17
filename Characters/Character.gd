@@ -7,7 +7,9 @@ class_name Character, "res://Assets/heroes/heroes_prev.png"
 # Сила трения?! Сопротивление?!
 const FRICTION: float = 0.15
 # Количество жизней
-export(int) var hp: int = 2
+export(int) var hp: int = 2 setget set_hp
+# Сигнал, для изменения жизней
+signal hp_changed(new_hp)
 # Ускорение
 export(int) var accerelation: int = 40
 # Максимальная скорость
@@ -38,10 +40,41 @@ func move() -> void:
 
 # Функция получения урона
 func take_damage(dam: int, dir: Vector2, force: int) -> void:
-	hp -= dam
+	self.hp -= dam
 	if hp > 0:
 		state_machine.set_state(state_machine.states.hurt)
 		velocity += dir * force
 	else:
 		state_machine.set_state(state_machine.states.dead)
 		velocity += dir * force * 2
+
+
+# Функция смены хп
+func set_hp(new_hp: int) -> void:
+	hp = new_hp
+	emit_signal("hp_changed", new_hp)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
