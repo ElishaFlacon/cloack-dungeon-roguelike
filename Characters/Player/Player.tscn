@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://Characters/Character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/heroes/knight/knight_idle_spritesheet.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Assets/heroes/knight/weapon_sword_1.png" type="Texture" id=6]
 [ext_resource path="res://Assets/effects/slash_effect_anim_spritesheet.png" type="Texture" id=7]
 [ext_resource path="res://Characters/Hitbox.gd" type="Script" id=8]
+[ext_resource path="res://Assets/effects/enemy_afterdead_explosion_anim_spritesheet.png" type="Texture" id=9]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
@@ -57,6 +58,22 @@ region = Rect2( 64, 0, 16, 16 )
 atlas = ExtResource( 3 )
 region = Rect2( 80, 0, 16, 16 )
 
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 9 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 9 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 9 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 9 )
+region = Rect2( 48, 0, 16, 16 )
+
 [sub_resource type="SpriteFrames" id=13]
 animations = [ {
 "frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
@@ -68,14 +85,19 @@ animations = [ {
 "loop": true,
 "name": "move",
 "speed": 5.0
+}, {
+"frames": [ SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ) ],
+"loop": true,
+"name": "dead",
+"speed": 5.0
 } ]
 
 [sub_resource type="CircleShape2D" id=14]
 radius = 4.0
 
 [sub_resource type="CapsuleShape2D" id=15]
-radius = 2.00002
-height = 12.0
+radius = 4.0
+height = 14.0
 
 [sub_resource type="Animation" id=20]
 resource_name = "RESET"
@@ -196,6 +218,183 @@ tracks/1/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimatedSprite:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ "idle" ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AnimatedSprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("AnimatedSprite:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath(".:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Sword:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=25]
+resource_name = "dead"
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "idle", "dead" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6, 0.7, 0.8, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 0, 1, 2, 3 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimatedSprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.741176, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sword:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=26]
+resource_name = "hurt"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "idle" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimatedSprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.741176, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 1,
+"values": [  ]
+}
 
 [sub_resource type="Animation" id=17]
 length = 0.6
@@ -286,7 +485,7 @@ collision_mask = 4
 script = ExtResource( 8 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sword/Node2D/Sprite/Hitbox" index="0"]
-position = Vector2( 4.94973, -3.53551 )
+position = Vector2( 6.36396, -4.94975 )
 rotation = 0.785398
 shape = SubResource( 15 )
 disabled = true
@@ -303,5 +502,7 @@ anims/attack = SubResource( 16 )
 
 [node name="AnimationPlayer" parent="." index="4"]
 anims/RESET = SubResource( 19 )
+anims/dead = SubResource( 25 )
+anims/hurt = SubResource( 26 )
 anims/idle = SubResource( 17 )
 anims/move = SubResource( 18 )
