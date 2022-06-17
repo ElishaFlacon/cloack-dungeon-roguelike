@@ -32,13 +32,13 @@ func _ready() -> void:
 
 
 # Функция округляет цифры, теперь не 0.199999 а 0.19
-func round_to_dec(num, digit):
+func round_to_dec(num: float, digit: int) -> float:
 	return round(num * pow(10.0, digit)) / pow(10.0, digit)
 
 
 # Функция выщитывает критический урон
 # randf_range генерирует с учетом псевдорандома
-func critical_damage():
+func critical_damage() -> int:
 	rng.randomize()
 	var trying = rng.randf_range(0.0, 1.0)
 	trying = round_to_dec(trying, 2)

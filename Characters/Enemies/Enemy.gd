@@ -10,6 +10,7 @@ var path: PoolVector2Array
 onready var navigation: Navigation2D = get_tree().current_scene.get_node("Navigation2D")
 # Получаем игрока
 onready var player: KinematicBody2D = get_tree().current_scene.get_node("Player")
+onready var path_timer: Timer = get_node("PathTimer")
 
 
 # Функции
@@ -35,4 +36,9 @@ func chase() -> void:
 # Типо когда таймер обновляется, то
 # Енеми ищет ближайший путь до игрока
 func _on_PathTimer_timeout() -> void:
-	path = navigation.get_simple_path(global_position, player.position)
+	if is_instance_valid(player):
+		path = navigation.get_simple_path(global_position, player.position)
+	else:
+		path_timer.stop()
+		path = []
+		mov_direction = Vector2.ZERO
