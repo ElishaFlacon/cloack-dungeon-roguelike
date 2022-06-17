@@ -66,6 +66,6 @@ position = Vector2( 87, 98 )
 
 [node name="FlyingCreature" parent="." instance=ExtResource( 4 )]
 position = Vector2( 154, 77 )
-hp = 300
+hp = 3
 accerelation = 20
 max_speed = 50
