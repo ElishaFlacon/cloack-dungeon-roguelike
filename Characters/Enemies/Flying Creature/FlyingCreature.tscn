@@ -279,7 +279,10 @@ position = Vector2( 0, 1 )
 shape = SubResource( 10 )
 
 [node name="Hitbox" type="Area2D" parent="." index="3"]
+collision_layer = 0
+collision_mask = 2
 script = ExtResource( 6 )
+crit_chance = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
 position = Vector2( 0, 1 )
