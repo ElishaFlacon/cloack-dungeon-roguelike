@@ -266,6 +266,8 @@ tracks/4/keys = {
 
 [node name="FlyingCreature" instance=ExtResource( 1 )]
 script = ExtResource( 5 )
+accerelation = 20
+max_speed = 50
 
 [node name="FiniteStateMachine" parent="." index="0"]
 script = ExtResource( 3 )
