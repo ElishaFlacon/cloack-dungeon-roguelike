@@ -11,7 +11,7 @@ const ENEMY_SCENES: Dictionary = {
 # Количество мобов
 var num_enemies: int
 # Переменные объектов на карте
-onready var tilemap: TileMap = get_node("Navigation2D/TileMap2")
+onready var tilemap: TileMap = get_node("BorderTileMap")
 onready var entrance: Node2D = get_node("Entrance")
 onready var door_container: Node2D = get_node("Doors")
 onready var enemy_positions_container: Node2D = get_node("EnemyPositions")
@@ -57,9 +57,11 @@ func _spawn_enemies() -> void:
 # При входе в комнату
 func _on_PlayerDetector_body_entered(_body: KinematicBody2D) -> void:
 	player_detector.queue_free()
-	_close_entrance()
-	_spawn_enemies()
-
+	if num_enemies > 0:
+		_close_entrance()
+		_spawn_enemies()
+	else:
+		_open_doors()
 
 
 

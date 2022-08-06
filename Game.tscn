@@ -25,7 +25,7 @@ tint_progress = Color( 0.615686, 0.176471, 0.176471, 1 )
 
 [node name="Tween" type="Tween" parent="UI/HealthBar"]
 
-[node name="Rooms" type="Node2D" parent="."]
+[node name="Rooms" type="Navigation2D" parent="."]
 
 [node name="Room0" parent="Rooms" instance=ExtResource( 1 )]
 position = Vector2( 24, 24 )
