@@ -10,6 +10,7 @@ var path: PoolVector2Array
 onready var navigation: Navigation2D = get_parent().get_node("Navigation2D")
 # Получаем игрока
 onready var player: KinematicBody2D = get_tree().current_scene.get_node("Player")
+# Получаем таймер
 onready var path_timer: Timer = get_node("PathTimer")
 
 
