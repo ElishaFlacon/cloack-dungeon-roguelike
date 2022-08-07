@@ -2,7 +2,7 @@ extends FiniteStateMachine
 
 
 # Функции
-
+# Функция инициализации
 func _init() -> void:
 	_add_state("idle")
 	_add_state("move")
@@ -10,16 +10,19 @@ func _init() -> void:
 	_add_state("dead")
 
 
+# Готова?!
 func _ready() -> void:
 	set_state(states.idle)
 
 
+# Функция логики состояния
 func _state_logic(_delta: float) -> void:
 	if state == states.idle or state == states.move:
 		parent.get_input()
 		parent.move()
 
 
+# Функция перехода состояния
 func _get_transition() -> int:
 	match state:
 		states.idle:
@@ -34,6 +37,7 @@ func _get_transition() -> int:
 	return -1
 
 
+# Функция входа в состояние
 func _enter_state(_previous_state: int, new_state: int) -> void:
 	match new_state:
 		states.idle:

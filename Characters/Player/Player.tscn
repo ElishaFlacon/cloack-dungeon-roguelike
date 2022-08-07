@@ -300,10 +300,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.6, 0.7, 0.8, 0.9 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.6, 0.7, 0.8, 0.9, 0.901, 0.902 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 0, 1, 2, 3 ]
+"values": [ 0, 0, 1, 2, 3, 3, 3 ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("AnimatedSprite:modulate")
@@ -324,9 +324,12 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 1 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
+"args": [  ],
+"method": "switch_camera"
+}, {
 "args": [  ],
 "method": "queue_free"
 } ]
@@ -507,3 +510,6 @@ anims/dead = SubResource( 25 )
 anims/hurt = SubResource( 26 )
 anims/idle = SubResource( 17 )
 anims/move = SubResource( 18 )
+
+[node name="Camera2D" type="Camera2D" parent="." index="5"]
+current = true

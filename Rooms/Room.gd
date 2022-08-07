@@ -23,17 +23,20 @@ func _ready() -> void:
 	num_enemies = enemy_positions_container.get_child_count()
 
 
+# Когда все враги убиты
 func _on_enemy_killed() -> void:
 	num_enemies -= 1
 	if num_enemies == 0:
 		_open_doors()
 
 
+# Функция открытия дверей
 func _open_doors() -> void:
 	for door in door_container.get_children():
 		door.open()
 
 
+# Функция закрытие дверей при входе в комнату
 func _close_entrance() -> void:
 	for entry_position in entrance.get_children():
 		# Цифры в конце после запятой, это номер тайл сета, на тайл сет навестить и там название
@@ -42,6 +45,7 @@ func _close_entrance() -> void:
 		tilemap.set_cellv(tilemap.world_to_map(entry_position.position) + Vector2.DOWN, 3)
 
 
+# Функция спавна мобов
 func _spawn_enemies() -> void:
 	for enemy_position in enemy_positions_container.get_children():
 		var enemy: KinematicBody2D = ENEMY_SCENES.FLYING_CREATURE.instance()

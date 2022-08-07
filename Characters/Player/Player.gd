@@ -43,3 +43,11 @@ func get_input() -> void:
 		mov_direction += Vector2.UP
 	if Input.is_action_just_pressed("ui_attack") and not sword_animation_player.is_playing():
 		sword_animation_player.play("attack")
+
+
+# В этой функции прописываем логику камеры
+func switch_camera() -> void:
+	var main_sceen_camera: Camera2D = get_parent().get_node("Camera2D")
+	main_sceen_camera.position = position
+	main_sceen_camera.current = true
+	get_node("Camera2D").current = false

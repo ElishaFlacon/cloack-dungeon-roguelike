@@ -26,18 +26,22 @@ func _physics_process(_delta: float) -> void:
 			set_state(transition)
 
 
+# Функция логики состояния
 func _state_logic(_delta: float) -> void:
 	pass
 
 
+# Функция перехода состояния
 func _get_transition() -> int:
 	return -1
 
 
+#Функция добавления состояния
 func _add_state(new_state: String) -> void:
 	states[new_state] = states.size()
 
 
+# Функция установки состояния
 func set_state(new_state: int) -> void:
 	_exit_state(state)
 	previous_state = state
@@ -45,9 +49,11 @@ func set_state(new_state: int) -> void:
 	_enter_state(previous_state, state)
 
 
+# Функция входа в состояние
 func _enter_state(_previous_state: int, _new_state: int) -> void:
 	pass
 
 
+# Функция выхода в состояние
 func _exit_state(_state_exited: int) -> void:
 	pass

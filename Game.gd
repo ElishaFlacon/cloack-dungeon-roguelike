@@ -1,8 +1,10 @@
 extends Node2D
 
 
+# Функции
 # Функция будет центрировать окно игры
 func _init() -> void:
+	randomize()
 	var screen_size: Vector2 = OS.get_screen_size()
 	var window_size: Vector2 = OS.get_window_size()
 	# Центрируем
