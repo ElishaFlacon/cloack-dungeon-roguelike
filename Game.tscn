@@ -14,9 +14,9 @@ script = ExtResource( 3 )
 script = ExtResource( 7 )
 
 [node name="HealthBar" type="TextureProgress" parent="UI"]
-margin_left = 16.0
+margin_left = 384.0
 margin_top = 16.0
-margin_right = 96.0
+margin_right = 464.0
 margin_bottom = 32.0
 value = 23.0
 texture_over = ExtResource( 5 )

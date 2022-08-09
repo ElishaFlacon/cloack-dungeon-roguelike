@@ -45,7 +45,7 @@ func get_input() -> void:
 		sword_animation_player.play("attack")
 
 
-# В этой функции прописываем логику камеры
+# В этой функции прописываем логику камеры при смерти
 func switch_camera() -> void:
 	var main_sceen_camera: Camera2D = get_parent().get_node("Camera2D")
 	main_sceen_camera.position = position
