@@ -24,8 +24,15 @@ func _ready() -> void:
 
 # Функция обновления хп бара
 func _update_health_bar(new_value: int) -> void:
-	var __ = health_bar_tween.interpolate_property(health_bar, "value",
-	health_bar.value, new_value, 0.5, Tween.TRANS_QUINT, Tween.EASE_OUT) 
+	var __ = health_bar_tween.interpolate_property(
+		health_bar, 
+		"value",
+		health_bar.value, 
+		new_value, 
+		0.5, 
+		Tween.TRANS_QUINT,
+		Tween.EASE_OUT
+	)
 	__ = health_bar_tween.start()
 
 

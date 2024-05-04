@@ -30,7 +30,6 @@ func _physics_process(_delta: float) -> void:
 	velocity = move_and_slide(velocity)
 	velocity = lerp(velocity, Vector2.ZERO, FRICTION)
 
-
 # Функция движения
 func move() -> void:
 	mov_direction = mov_direction.normalized()
@@ -53,28 +52,5 @@ func take_damage(dam: int, dir: Vector2, force: int) -> void:
 func set_hp(new_hp: int) -> void:
 	hp = new_hp
 	emit_signal("hp_changed", new_hp)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

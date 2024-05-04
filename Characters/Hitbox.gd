@@ -51,3 +51,4 @@ func critical_damage() -> int:
 # Функция удара, получения урона при входе в хитбокс меча
 func _on_body_entered(body: PhysicsBody2D) -> void:
 	body.take_damage(critical_damage(), knockback_direction, knockback_force)
+	body.set_hp(body.hp) 

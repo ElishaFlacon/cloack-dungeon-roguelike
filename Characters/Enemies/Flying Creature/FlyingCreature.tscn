@@ -295,3 +295,7 @@ anims/RESET = SubResource( 14 )
 anims/dead = SubResource( 11 )
 anims/fly = SubResource( 12 )
 anims/hurt = SubResource( 13 )
+
+[node name="HealthBar" parent="." index="6"]
+margin_top = -12.0
+margin_bottom = 4.0
